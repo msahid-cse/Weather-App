@@ -7,49 +7,121 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
             background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
         }
+
         .container {
-            margin-top: 50px;
-            padding: 20px;
+            flex: 1;
+            display: flex;
+            margin: 50px auto;
+            width: 80%;
             background: white;
-            width: 50%;
-            margin: auto;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
         }
+
+        .content {
+            flex: 3;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .sidebar {
+            flex: 1;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            text-align: center;
+            background: #444;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background: #555;
+        }
+
         .weather-info {
             margin-top: 20px;
         }
+
         .weather-icon {
             width: 100px;
+        }
+
+        .footer {
+            text-align: center;
+            background: #333;
+            color: white;
+            padding: 10px;
+            margin-top: auto;
+        }
+
+        .footer a {
+            color: #00aced;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Weather App</h1>
-        <form method="POST">
-            {% csrf_token %}
-            <input type="text" name="city" placeholder="Enter city name" required>
-            <button type="submit">Get Weather</button>
-        </form>
-
-        {% if weather_data %}
-        <div class="weather-info">
-            <h2>{{ weather_data.city }}</h2>
-            <img class="weather-icon" src="http://openweathermap.org/img/wn/{{ weather_data.icon }}@2x.png" alt="Weather Icon">
-            <p><strong>Temperature:</strong> {{ weather_data.temperature }}°C</p>
-            <p><strong>Description:</strong> {{ weather_data.description }}</p>
-            <p><strong>Humidity:</strong> {{ weather_data.humidity }}%</p>
-            <p><strong>Wind Speed:</strong> {{ weather_data.wind_speed }} m/s</p>
+        <!-- Sidebar Menu -->
+        <div class="sidebar">
+            <h2>Weather Menu</h2>
+            <a href="#">Today Weather</a>
+            <a href="#">Next 1 Week</a>
+            <a href="#">Next 1 Month</a>
+            <a href="#">Previous 1 Week</a>
+            <a href="#">Previous 1 Month</a>
+            <a href="#">Current Year Prediction</a>
         </div>
-        {% endif %}
 
-        {% if error_message %}
-        <p style="color: red;">{{ error_message }}</p>
-        {% endif %}
+        <!-- Main Content -->
+        <div class="content">
+            <h1>Weather App</h1>
+            <form method="POST">
+                {% csrf_token %}
+                <input type="text" name="city" placeholder="Enter city name" required>
+                <button type="submit">Get Weather</button>
+            </form>
+
+            {% if weather_data %}
+            <div class="weather-info">
+                <h2>{{ weather_data.city }}</h2>
+                <img class="weather-icon" src="http://openweathermap.org/img/wn/{{ weather_data.icon }}@2x.png" alt="Weather Icon">
+                <p><strong>Temperature:</strong> {{ weather_data.temperature }}°C</p>
+                <p><strong>Description:</strong> {{ weather_data.description }}</p>
+                <p><strong>Humidity:</strong> {{ weather_data.humidity }}%</p>
+                <p><strong>Wind Speed:</strong> {{ weather_data.wind_speed }} m/s</p>
+            </div>
+            {% endif %}
+
+            {% if error_message %}
+            <p style="color: red;">{{ error_message }}</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        All rights reserved © <a href="https://github.com/msahid-cse" target="_blank" style="color: green;">msahid.cse</a>
     </div>
 </body>
 </html>
