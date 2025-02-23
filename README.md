@@ -60,7 +60,7 @@ This project is open-source and available under the MIT License.
 
 ## Screenshots
 
-![Weather App UI] (https://github.com/msahid-cse/Weather-App/blob/main/weather%20app.png)
+[Weather App UI] : [https://github.com/msahid-cse/Weather-App/blob/main/weather%20app.png]
 
 
 ## Future Improvements
