@@ -43,11 +43,14 @@
         }
         #today {
 
-            background-color: green;
+            background-color: #7d98a1;
             color: white;
         }
         
-
+        #submit{
+            background-color: #7d98a1;
+            color: white; 
+        }
         .sidebar a {
             text-decoration: none;
             color: white;
@@ -105,7 +108,7 @@
             <form method="POST">
                 {% csrf_token %}
                 <input type="text" name="city" placeholder="Enter city name" required>
-                <button type="submit">Get Weather</button>
+                <button type="submit" id="submit">Get Weather</button>
             </form>
 
             {% if weather_data %}
@@ -127,7 +130,7 @@
 
     <!-- Footer -->
     <div class="footer">
-        All rights reserved © <a href="https://github.com/msahid-cse" target="_blank" style="color: green;">msahid.cse</a>
+        All rights reserved © <a href="https://github.com/msahid-cse" target="_blank" style="color: #7d98a1;">msahid.cse</a>
     </div>
 </body>
 </html>
